@@ -29,6 +29,21 @@ class Tree {
         return root;
     }
 
+    search(root, value) {
+        if(!root) {
+            console.log('value have not in this tree.');
+            return;
+        }
+        if(value === root.value){
+            console.log('value have in this tree.');
+            return true;
+        }else if(value < root.value){
+            return this.search(root.left, value);
+        }else {
+            return this.search(root.right, value);
+        }
+    }
+
     preOrder(root) {
         if (!root) {
             return;
@@ -68,4 +83,4 @@ tree.insert(4);
 tree.insert(7);
 tree.insert(13);
 
-tree.postOrder(tree.root);
+tree.search(tree.root, 88);

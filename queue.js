@@ -39,7 +39,66 @@ queue.enqueue("NODEJS");
 queue.dequeue();
 queue.dequeue();
 
-console.log(queue.items);
-// console.log(queue.peek());
-// console.log(queue.is_empty());
-// console.log(queue.size());
+// console.log(queue.items);
+
+
+class Node{
+    constructor(value){
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class Queue2{
+    constructor(value) {
+        this.front = null;
+        this.rear = null;
+        this.size = 0;
+    }
+
+    isEmpty(){
+        return this.size === 0 ? true : false;
+    }
+
+    enqueue(data){
+        let newNode = new Node(data);
+        if(this.isEmpty()){
+            this.front = newNode;
+        }else{
+            this.rear.next = newNode;
+        }
+
+        this.rear = newNode;
+        this.size++;
+    }
+
+    dequeue(){
+        if(this.isEmpty()) return;
+
+        this.front = this.front.next;
+        this.size--;
+
+        if(this.isEmpty()){
+            this.rear = null;
+        }
+    }
+
+    print(){
+        let current = this.front;
+        let text = '';
+        while(current){
+            text += current.value + ' ';
+            current = current.next;
+        }
+        console.log(text);
+    }
+}
+
+let queue2 = new Queue2();
+queue2.enqueue(1);
+queue2.enqueue(2);
+queue2.enqueue(3);
+queue2.enqueue(4);
+queue2.dequeue();
+queue2.dequeue();
+queue2.print();

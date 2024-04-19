@@ -26,6 +26,7 @@ class Stack {
         if(this.isEmpty()) return;
 
         this.top = this.top.next;
+        this.length--;
     }
 
     peek() {
@@ -36,7 +37,7 @@ class Stack {
         let current = this.top;
         let text = '';
         while(current) {
-            // console.log(current.value);
+            console.log(current);
             text += current.value + ' ';
             current = current.next;
         }
@@ -49,9 +50,10 @@ stack.push(1); // value: 1 , next: null
 stack.push(2); // value: 2 , next: {value:1, next: null}
 stack.push(3);
 stack.push(4);
-stack.push(5);
-stack.pop();
-stack.pop();
-stack.push(5);
 stack.print();
-console.log(stack.peek());
+stack.push(5);
+stack.pop();
+stack.pop();
+stack.push(5);
+// stack.print();
+// console.log(stack.peek());
